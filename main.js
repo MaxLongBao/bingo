@@ -1,4 +1,4 @@
-const playBingoGame = require('./bingoGame');
+const { playBingoGame } = require('./bingoGame');
 
 // Get file paths from command line arguments
 const [,, numbersPath, cardPath] = process.argv;

@@ -5,7 +5,9 @@ const playBingoGame = (numbersPath, cardPath) => {
   const numbersArray = readNumbers(numbersPath);
   const cardsArray = readCard(cardPath);
 
-  // Check if there is only one card
+  if (!numbersArray.length || !cardsArray.length) return;
+
+  // Check if there is only one card or more
   if (cardsArray.length === 1) {
     const cardArray = cardsArray[0];
     const [, announceBingo] = checkBingo(numbersArray, cardArray);
@@ -28,8 +30,11 @@ const playBingoGame = (numbersPath, cardPath) => {
 
 const checkBingo = (numbersArray, cardArray) => {
   let announceBingo = 'Bingo! On ';
+
+  // Initialise the counters for rows and columns
   const rowArray = new Array(cardArray.length).fill(0);
   const columnArray = new Array(cardArray[0].length).fill(0);
+  
   // Iterate through the numbersArray
   numbers: for (let i = 0; i < numbersArray.length; i++) {
     // Iterate through the rows
@@ -53,6 +58,11 @@ const checkBingo = (numbersArray, cardArray) => {
       }
     }
   }
+  announceBingo = 'No winning card';
+  return [0, announceBingo]
 }
 
-module.exports = playBingoGame;
+module.exports = {
+  playBingoGame,
+  checkBingo,
+};
