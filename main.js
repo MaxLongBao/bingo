@@ -1,4 +1,5 @@
 const { playBingoGame } = require('./bingoGame');
+const { readNumbers, readCard } = require('./fileReader');
 
 // Get file paths from command line arguments
 const [,, numbersPath, cardPath] = process.argv;
@@ -9,4 +10,8 @@ if (!numbersPath || !cardPath) {
   process.exit(1);
 }
 
-playBingoGame(numbersPath, cardPath);
+// Read and process datasets
+const numbersArray = readNumbers(numbersPath);
+const cardsArray = readCard(cardPath);
+
+playBingoGame(numbersArray, cardsArray);

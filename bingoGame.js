@@ -1,11 +1,5 @@
-const { readNumbers, readCard } = require('./fileReader');
-
-const playBingoGame = (numbersPath, cardPath) => {
-  // Read and process datasets
-  const numbersArray = readNumbers(numbersPath);
-  const cardsArray = readCard(cardPath);
-
-  if (!numbersArray.length || !cardsArray.length) return;
+const playBingoGame = (numbersArray, cardsArray) => {
+  if (!numbersArray.length || !Array.isArray(numbersArray) || !cardsArray.length || !Array.isArray(cardsArray)) return;
 
   // Check if there is only one card or more
   if (cardsArray.length === 1) {
@@ -13,8 +7,7 @@ const playBingoGame = (numbersPath, cardPath) => {
     const [, announceBingo] = checkBingo(numbersArray, cardArray);
     console.log(announceBingo);
   } else {
-    let numbersCounter;
-    let winningCard;
+    let numbersCounter, winningCard;
     for (let card = 0; card < cardsArray.length; card++) {
       const cardArray = cardsArray[card];
       const [numberIndex, announceBingo] = checkBingo(numbersArray, cardArray);
@@ -59,7 +52,7 @@ const checkBingo = (numbersArray, cardArray) => {
     }
   }
   announceBingo = 'No winning card';
-  return [0, announceBingo]
+  return [null, announceBingo]
 }
 
 module.exports = {

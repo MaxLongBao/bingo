@@ -48,11 +48,80 @@ describe('When playing the bingo game', () => {
       });
     });
 
-    describe('there are no winning numbers', () => {
+    describe('when there are no winning numbers', () => {
       it('should ouput a message with no winning card', () => {
         const [, announceBingo] = checkBingo(nonWinningNumbersArray, cardArray2);
         expect(announceBingo).toBe('No winning card');
       });
+    });
+  });
+  describe('when using multiple cards', () => {
+    let logSpy;
+    describe('when there is no winning card', () => {
+      beforeAll(() => {
+        logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+        playBingoGame(nonWinningNumbersArray, cardsArray);
+      });
+    
+      afterAll(() => {
+        logSpy.mockRestore();
+      });
+      it('should output a message with no winning card', () => {
+        const consoleOutput = logSpy.mock.calls[0][0];
+        expect(consoleOutput).toBe('No winning card');
+      });
+    });
+    describe('when there is a winning card', () => {
+      beforeAll(() => {
+        logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+        playBingoGame(numbersArray, cardsArray);
+      });
+    
+      afterAll(() => {
+        logSpy.mockRestore();
+      });
+      it('should output the number of the winning card', () => {
+        const consoleOutput = logSpy.mock.calls[3][0];
+        expect(consoleOutput).toBe('Psst... to win against the squid, select the card number 3!');
+      });
+  
+      it('should output the winning rows and columns of all the cards', () => {
+        expect(logSpy.mock.calls[0][0]).toBe('Bingo! On row 3');
+        expect(logSpy.mock.calls[1][0]).toBe('Bingo! On column 3');
+        expect(logSpy.mock.calls[2][0]).toBe('Bingo! On row 1');
+      });
+    });
+  });
+  describe('when the numbers array is empty', () => {
+    it('should not output anything', () => {
+      const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+      playBingoGame([], cardsArray);
+      expect(logSpy).not.toHaveBeenCalled();
+      logSpy.mockRestore();
+    });
+  });
+  describe('when the cards array is empty', () => {
+    it('should not output anything', () => {
+      const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+      playBingoGame(numbersArray, []);
+      expect(logSpy).not.toHaveBeenCalled();
+      logSpy.mockRestore();
+    });
+  });
+  describe('when the numbers array is not an array', () => {
+    it('should not output anything', () => {
+      const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+      playBingoGame('not an array', cardsArray);
+      expect(logSpy).not.toHaveBeenCalled();
+      logSpy.mockRestore();
+    });
+  });
+  describe('when the cards array is not an array', () => {
+    it('should not output anything', () => {
+      const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
+      playBingoGame(numbersArray, 'not an array');
+      expect(logSpy).not.toHaveBeenCalled();
+      logSpy.mockRestore();
     });
   });
 });
