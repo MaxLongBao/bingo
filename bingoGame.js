@@ -10,16 +10,7 @@ const playBingoGame = (numbersArray, cardsArray) => {
     const [, announceBingo] = checkBingo(numbersArray, cardArray);
     console.log(announceBingo);
   } else {
-    let numbersCounter, winningCard;
-    for (let card = 0; card < cardsArray.length; card++) {
-      const cardArray = cardsArray[card];
-      const [numberIndex, announceBingo] = checkBingo(numbersArray, cardArray);
-      console.log(announceBingo);
-      if (numberIndex < numbersCounter || !numbersCounter) {
-        numbersCounter = numberIndex;
-        winningCard = card + 1;
-      }
-    }
+    const winningCard = findWinningCard(numbersArray, cardsArray);
     console.log(`Psst... to win against the squid, select the card number ${winningCard}!`);
   }
 }
@@ -27,10 +18,8 @@ const playBingoGame = (numbersArray, cardsArray) => {
 const checkBingo = (numbersArray, cardArray) => {
   let announceBingo = 'Bingo! On ';
 
-  // Initialise the counters for rows and columns
-  const rowArray = new Array(cardArray.length).fill(0);
-  const columnArray = new Array(cardArray[0].length).fill(0);
-  
+  const [rowArray, columnArray] = initializeCounters(cardArray);
+
   // Iterate through the numbersArray
   numbers: for (let i = 0; i < numbersArray.length; i++) {
     // Iterate through the rows
@@ -67,7 +56,32 @@ const isValidInput = (numbersArray, cardsArray) => {
   );
 };
 
+const initializeCounters = (cardArray) => {
+  const rowArray = new Array(cardArray.length).fill(0);
+  const columnArray = new Array(cardArray[0].length).fill(0);
+  return [rowArray, columnArray];
+};
+
+const findWinningCard = (numbersArray, cardsArray) => {
+  let numbersCounter, winningCard;
+
+  cardsArray.forEach((cardArray, index) => {
+    const [numberIndex, announceBingo] = checkBingo(numbersArray, cardArray);
+    console.log(announceBingo);
+
+    if (numberIndex < numbersCounter || numbersCounter === undefined) {
+      numbersCounter = numberIndex;
+      winningCard = index + 1;
+    }
+  });
+
+  return winningCard;
+};
+
 module.exports = {
   playBingoGame,
   checkBingo,
+  isValidInput,
+  initializeCounters,
+  findWinningCard,
 };

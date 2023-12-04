@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1701710276641" clover="3.2.0">
-  <project timestamp="1701710276641" name="All files">
-    <metrics statements="54" coveredstatements="51" conditionals="32" coveredconditionals="31" methods="7" coveredmethods="7" elements="93" coveredelements="89" complexity="0" loc="54" ncloc="54" packages="1" files="2" classes="2"/>
+<coverage generated="1701717312924" clover="3.2.0">
+  <project timestamp="1701717312925" name="All files">
+    <metrics statements="59" coveredstatements="56" conditionals="32" coveredconditionals="31" methods="10" coveredmethods="10" elements="101" coveredelements="97" complexity="0" loc="59" ncloc="59" packages="1" files="2" classes="2"/>
     <file name="bingoGame.js" path="/Users/max/Desktop/dev-projects/bingo/bingoGame.js">
-      <metrics statements="38" coveredstatements="35" conditionals="22" coveredconditionals="21" methods="3" coveredmethods="3"/>
+      <metrics statements="43" coveredstatements="40" conditionals="22" coveredconditionals="21" methods="6" coveredmethods="6"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="6" type="cond" truecount="2" falsecount="0"/>
       <line num="3" count="4" type="stmt"/>
@@ -12,36 +12,41 @@
       <line num="9" count="0" type="stmt"/>
       <line num="10" count="0" type="stmt"/>
       <line num="11" count="0" type="stmt"/>
+      <line num="13" count="2" type="stmt"/>
       <line num="14" count="2" type="stmt"/>
-      <line num="15" count="6" type="stmt"/>
-      <line num="16" count="6" type="stmt"/>
-      <line num="17" count="6" type="stmt"/>
-      <line num="18" count="6" type="cond" truecount="4" falsecount="0"/>
-      <line num="19" count="5" type="stmt"/>
-      <line num="20" count="5" type="stmt"/>
-      <line num="23" count="2" type="stmt"/>
-      <line num="27" count="1" type="stmt"/>
-      <line num="28" count="9" type="stmt"/>
-      <line num="31" count="9" type="stmt"/>
-      <line num="32" count="9" type="stmt"/>
-      <line num="35" count="9" type="stmt"/>
-      <line num="37" count="90" type="stmt"/>
-      <line num="39" count="295" type="stmt"/>
-      <line num="40" count="1354" type="cond" truecount="2" falsecount="0"/>
-      <line num="41" count="70" type="stmt"/>
-      <line num="42" count="70" type="stmt"/>
-      <line num="43" count="70" type="cond" truecount="4" falsecount="0"/>
-      <line num="44" count="5" type="cond" truecount="2" falsecount="0"/>
-      <line num="45" count="3" type="stmt"/>
-      <line num="47" count="5" type="cond" truecount="2" falsecount="0"/>
-      <line num="48" count="2" type="stmt"/>
-      <line num="50" count="5" type="stmt"/>
-      <line num="52" count="65" type="stmt"/>
-      <line num="57" count="4" type="stmt"/>
-      <line num="58" count="4" type="stmt"/>
-      <line num="61" count="1" type="stmt"/>
-      <line num="62" count="6" type="stmt"/>
-      <line num="70" count="1" type="stmt"/>
+      <line num="18" count="1" type="stmt"/>
+      <line num="19" count="12" type="stmt"/>
+      <line num="21" count="12" type="stmt"/>
+      <line num="24" count="12" type="stmt"/>
+      <line num="26" count="131" type="stmt"/>
+      <line num="28" count="409" type="stmt"/>
+      <line num="29" count="1852" type="cond" truecount="2" falsecount="0"/>
+      <line num="30" count="111" type="stmt"/>
+      <line num="31" count="111" type="stmt"/>
+      <line num="32" count="111" type="cond" truecount="4" falsecount="0"/>
+      <line num="33" count="8" type="cond" truecount="2" falsecount="0"/>
+      <line num="34" count="5" type="stmt"/>
+      <line num="36" count="8" type="cond" truecount="2" falsecount="0"/>
+      <line num="37" count="3" type="stmt"/>
+      <line num="39" count="8" type="stmt"/>
+      <line num="41" count="103" type="stmt"/>
+      <line num="46" count="4" type="stmt"/>
+      <line num="47" count="4" type="stmt"/>
+      <line num="50" count="1" type="stmt"/>
+      <line num="51" count="11" type="stmt"/>
+      <line num="59" count="1" type="stmt"/>
+      <line num="60" count="13" type="stmt"/>
+      <line num="61" count="13" type="stmt"/>
+      <line num="62" count="13" type="stmt"/>
+      <line num="65" count="1" type="stmt"/>
+      <line num="68" count="3" type="stmt"/>
+      <line num="69" count="9" type="stmt"/>
+      <line num="70" count="9" type="stmt"/>
+      <line num="72" count="9" type="cond" truecount="4" falsecount="0"/>
+      <line num="73" count="5" type="stmt"/>
+      <line num="74" count="5" type="stmt"/>
+      <line num="78" count="3" type="stmt"/>
+      <line num="81" count="1" type="stmt"/>
     </file>
     <file name="fileReader.js" path="/Users/max/Desktop/dev-projects/bingo/fileReader.js">
       <metrics statements="16" coveredstatements="16" conditionals="10" coveredconditionals="10" methods="4" coveredmethods="4"/>

@@ -1,4 +1,10 @@
-const { playBingoGame, checkBingo } = require('./bingoGame');
+const { 
+  playBingoGame,
+  checkBingo,
+  isValidInput,
+  initializeCounters,
+  findWinningCard
+} = require('./bingoGame');
 
 const numbersArray = [7, 4, 9, 5, 11, 17, 23, 2, 0, 14, 21, 24, 10, 16, 13, 6, 15, 25, 12, 22, 18, 20, 8, 19, 3, 26, 1];
 const nonWinningNumbersArray = [50, 60, 70, 80, 90];
@@ -125,5 +131,48 @@ describe('When playing the bingo game', () => {
       expect(logSpy).toHaveBeenCalledWith(invalidInputMessage);
       logSpy.mockRestore();
     });
+  });
+});
+
+describe('When calling the isValidInput function', () => {
+  it('should return true for valid input', () => {
+    const result = isValidInput(numbersArray, cardsArray);
+    expect(result).toBe(true);
+  });
+
+  it('should return false for empty numbers array', () => {
+    const cardsArray = [[1, 2, 3], [4, 5, 6]];
+    const result = isValidInput([], cardsArray);
+    expect(result).toBe(false);
+  });
+
+  it('should return false for empty cards array', () => {
+    const result = isValidInput(numbersArray, []);
+    expect(result).toBe(false);
+  });
+
+  it('should return false for non-array numbers array', () => {
+    const result = isValidInput('not an array', cardsArray);
+    expect(result).toBe(false);
+  });
+
+  it('should return false for non-array cards array', () => {
+    const result = isValidInput(numbersArray, 'not an array');
+    expect(result).toBe(false);
+  });
+});
+
+describe('When calling the initializeCounter function', () => {
+  it('should initialize counters for a card array', () => {
+    const [rowArray, columnArray] = initializeCounters(cardArray1);
+    expect(rowArray).toEqual([0, 0, 0, 0, 0]);
+    expect(columnArray).toEqual([0, 0, 0, 0, 0]);
+  });
+});
+
+describe('When calling the findWinningCard function', () => {
+  it('should find the winning card', () => {
+    const result = findWinningCard(numbersArray, cardsArray);
+    expect(result).toBe(3);
   });
 });
