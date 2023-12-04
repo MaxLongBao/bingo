@@ -32,6 +32,8 @@ const cardsArray = [
   cardArray3
 ]
 
+const invalidInputMessage = 'Invalid input. Please provide valid numbers and cards arrays.';
+
 describe('When playing the bingo game', () => {
   describe('when using one card', () => {
     describe('when the winning numbers are in a row', () => {
@@ -62,7 +64,7 @@ describe('When playing the bingo game', () => {
         logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
         playBingoGame(nonWinningNumbersArray, cardsArray);
       });
-    
+
       afterAll(() => {
         logSpy.mockRestore();
       });
@@ -93,34 +95,34 @@ describe('When playing the bingo game', () => {
     });
   });
   describe('when the numbers array is empty', () => {
-    it('should not output anything', () => {
+    it('should log an error message', () => {
       const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
       playBingoGame([], cardsArray);
-      expect(logSpy).not.toHaveBeenCalled();
+      expect(logSpy).toHaveBeenCalledWith(invalidInputMessage);
       logSpy.mockRestore();
     });
   });
   describe('when the cards array is empty', () => {
-    it('should not output anything', () => {
+    it('should log an error message', () => {
       const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
       playBingoGame(numbersArray, []);
-      expect(logSpy).not.toHaveBeenCalled();
+      expect(logSpy).toHaveBeenCalledWith(invalidInputMessage);
       logSpy.mockRestore();
     });
   });
   describe('when the numbers array is not an array', () => {
-    it('should not output anything', () => {
+    it('should log an error message', () => {
       const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
       playBingoGame('not an array', cardsArray);
-      expect(logSpy).not.toHaveBeenCalled();
+      expect(logSpy).toHaveBeenCalledWith(invalidInputMessage);
       logSpy.mockRestore();
     });
   });
   describe('when the cards array is not an array', () => {
-    it('should not output anything', () => {
+    it('should log an error message', () => {
       const logSpy = jest.spyOn(console, 'log').mockImplementation(() => {});
       playBingoGame(numbersArray, 'not an array');
-      expect(logSpy).not.toHaveBeenCalled();
+      expect(logSpy).toHaveBeenCalledWith(invalidInputMessage);
       logSpy.mockRestore();
     });
   });

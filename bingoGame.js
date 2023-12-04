@@ -1,5 +1,8 @@
 const playBingoGame = (numbersArray, cardsArray) => {
-  if (!numbersArray.length || !Array.isArray(numbersArray) || !cardsArray.length || !Array.isArray(cardsArray)) return;
+  if (!isValidInput(numbersArray, cardsArray)) {
+    console.log('Invalid input. Please provide valid numbers and cards arrays.');
+    return;
+  }
 
   // Check if there is only one card or more
   if (cardsArray.length === 1) {
@@ -54,6 +57,15 @@ const checkBingo = (numbersArray, cardArray) => {
   announceBingo = 'No winning card';
   return [null, announceBingo]
 }
+
+const isValidInput = (numbersArray, cardsArray) => {
+  return (
+    Array.isArray(numbersArray) &&
+    Array.isArray(cardsArray) &&
+    numbersArray.length > 0 &&
+    cardsArray.length > 0
+  );
+};
 
 module.exports = {
   playBingoGame,
